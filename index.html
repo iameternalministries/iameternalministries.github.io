@@ -2,262 +2,593 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Friendly Flavors / Sabores Amigables</title>
-  <meta name="description" content="Friendly Flavors / Sabores Amigables — monthly food sale fundraiser. Text (619) 361-1391 to submit your order." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Friendly Flavors / Sabores Amigables — Food Sale</title>
+  <meta name="description" content="Monthly food sale by I AM Eternal Ministries / Ministerios El Gran Yo Soy to raise funds for our new temple. Text (619) 361-1391 to order." />
   <style>
     :root{
-      --bg:#fafafa;
-      --card:#ffffff;
-      --ink:#111;
-      --muted:#555;
-      --line:#e6e6e6;
-      --accent:#111;
-      --shadow: 0 8px 24px rgba(0,0,0,.08);
+      /* Olive / “olive tree” palette */
+      --olive-900:#2f3a1c;
+      --olive-800:#3a4a22;
+      --olive-700:#4a5f2a;
+      --olive-600:#5f7a35;
+      --olive-500:#6f8f3a;
+      --olive-200:#dfe8cf;
+
+      --cream:#fbfaf7;
+      --paper:#ffffff;
+      --ink:#121212;
+      --muted:#4b5563;
+      --border:rgba(17,24,39,.12);
+
+      --shadow: 0 10px 30px rgba(0,0,0,.12);
       --radius: 18px;
-      --max: 860px;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color:var(--ink);
-      background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(111,143,58,.22), transparent 55%),
+        radial-gradient(900px 500px at 95% 10%, rgba(95,122,53,.18), transparent 60%),
+        linear-gradient(180deg, var(--cream), #f3f6ee 55%, #eef3e6);
+      min-height:100vh;
     }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
-    header{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:28px 22px;
-      text-align:center;
-    }
-    .kicker{letter-spacing:.08em; font-weight:700; font-size:14px; text-transform:uppercase}
-    h1{
-      margin:10px 0 8px;
-      font-size: clamp(32px, 4vw, 52px);
-      line-height:1.05;
-    }
-    .sub{
+
+    a{ color:inherit; }
+    .container{
+      width:min(1100px, 92vw);
       margin:0 auto;
-      max-width: 48ch;
-      color:var(--muted);
-      font-size: 18px;
-      line-height:1.45;
+      padding:28px 0 60px;
     }
-    .divider{
-      display:flex; align-items:center; justify-content:center;
-      gap:12px; margin:18px 0 6px;
+
+    header{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 18px;
+      background:rgba(255,255,255,.75);
+      border:1px solid var(--border);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 26px rgba(0,0,0,.06);
+      position: sticky;
+      top: 14px;
+      z-index: 10;
     }
-    .divider::before, .divider::after{
-      content:""; height:1px; width:120px; background:var(--ink); opacity:.35;
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width: 220px;
     }
-    .apple{font-size:18px}
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:16px;
-      margin-top:18px;
+    .brand img{
+      width:54px;
+      height:54px;
+      object-fit:contain;
+      border-radius:14px;
+      background: linear-gradient(135deg, rgba(111,143,58,.20), rgba(47,58,28,.12));
+      border:1px solid rgba(47,58,28,.15);
+      padding:8px;
     }
-    @media (min-width: 860px){
-      .grid{grid-template-columns: 1fr 1fr;}
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:18px 18px 16px;
-    }
-    .card h2{
-      margin:6px 0 10px;
-      font-size: 28px;
+    .brand .title{
       line-height:1.1;
     }
-    .langtag{
-      display:inline-block;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size: 12px;
-      padding:6px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      color:var(--muted);
-      background:#fff;
-    }
-    .lead{
-      margin:0 0 12px;
-      color:var(--muted);
-      font-size: 17px;
-      line-height:1.5;
-    }
-    .strong{
-      font-weight:800;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      margin: 10px 0 10px;
-    }
-    .cta{
-      margin-top:12px;
-      padding:14px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: #fff;
-    }
-    .cta .label{
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size: 12px;
-      color:var(--muted);
-      text-transform:uppercase;
+    .brand .title strong{
+      display:block;
+      font-size:14px;
       letter-spacing:.08em;
-      margin-bottom:6px;
+      text-transform:uppercase;
+      color:var(--olive-800);
     }
-    .phone{
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:900;
-      font-size: 26px;
-      letter-spacing:.02em;
-    }
-    .hint{
-      margin:6px 0 0;
+    .brand .title span{
+      display:block;
+      font-size:13px;
       color:var(--muted);
-      font-size: 14px;
-      line-height:1.4;
+      margin-top:4px;
     }
-    .menuTitle{
-      margin:14px 0 10px;
-      padding-top:12px;
-      border-top:1px solid var(--line);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:800;
-      letter-spacing:.02em;
+
+    .lang-toggle{
+      display:flex;
+      gap:8px;
+      padding:6px;
+      border-radius:999px;
+      background: rgba(47,58,28,.06);
+      border:1px solid rgba(47,58,28,.12);
     }
-    .menu{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:6px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    .menu td{
-      padding:10px 0;
-      border-bottom:1px dashed rgba(0,0,0,.12);
-      vertical-align:top;
-      font-size: 16px;
-    }
-    .menu td:last-child{
-      text-align:right;
-      white-space:nowrap;
-      font-weight:800;
-    }
-    .footCta{
-      margin:18px auto 0;
-      text-align:center;
-      font-size: 20px;
-      font-style: italic;
-      font-weight: 700;
-    }
-    footer{
-      text-align:center;
-      color:var(--muted);
-      font-size: 12px;
-      margin:18px 0 4px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    .toggleRow{
-      display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
-      margin-top:16px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    .btn{
-      appearance:none;
-      border:1px solid var(--line);
-      background:#fff;
-      padding:10px 14px;
+    .lang-toggle button{
+      border:0;
+      background:transparent;
+      padding:9px 14px;
       border-radius:999px;
       cursor:pointer;
-      font-weight:700;
+      font-weight:650;
+      color:var(--olive-900);
+      letter-spacing:.02em;
     }
-    .btn:focus{outline:2px solid #000; outline-offset:2px}
+    .lang-toggle button.active{
+      background: linear-gradient(135deg, var(--olive-600), var(--olive-500));
+      color:white;
+      box-shadow: 0 10px 22px rgba(95,122,53,.35);
+    }
+
+    .hero{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.25fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .card{
+      background: rgba(255,255,255,.82);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-main{
+      padding:26px;
+      position:relative;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(111,143,58,.12);
+      border:1px solid rgba(111,143,58,.25);
+      color:var(--olive-900);
+      font-weight:700;
+      letter-spacing:.02em;
+      font-size:13px;
+    }
+    .hero h1{
+      margin:14px 0 8px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      letter-spacing:-.02em;
+    }
+    .hero p{
+      margin:0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+      align-items:center;
+    }
+    .cta{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      padding:14px 16px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(95,122,53,.16), rgba(111,143,58,.10));
+      border:1px solid rgba(47,58,28,.14);
+    }
+    .cta .label{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:2px;
+    }
+    .cta .value{
+      font-size:18px;
+      font-weight:800;
+      letter-spacing:.01em;
+      color:var(--olive-900);
+    }
+    .cta a.button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight:800;
+      background: linear-gradient(135deg, var(--olive-700), var(--olive-500));
+      color:white;
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow: 0 12px 22px rgba(95,122,53,.28);
+      white-space:nowrap;
+    }
+    .cta a.button:hover{ filter:brightness(1.03); }
+
+    .hero-side{
+      display:flex;
+      flex-direction:column;
+    }
+    .hero-side .panel{
+      padding:22px;
+      height:100%;
+      position:relative;
+      background:
+        radial-gradient(700px 280px at 40% -30%, rgba(111,143,58,.22), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.72));
+    }
+    .panel h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:.01em;
+      color:var(--olive-900);
+    }
+    .panel ul{
+      margin:0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height:1.7;
+      font-size: 14.5px;
+    }
+
+    .menu{
+      margin-top:18px;
+      padding:0;
+    }
+    .menu-header{
+      padding:18px 22px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      background: linear-gradient(135deg, rgba(111,143,58,.14), rgba(255,255,255,.75));
+    }
+    .menu-header h2{
+      margin:0;
+      font-size:18px;
+      color:var(--olive-900);
+    }
+    .menu-header .date{
+      margin-top:4px;
+      font-size:14px;
+      color:var(--muted);
+      font-weight:650;
+      white-space:nowrap;
+    }
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      padding:18px;
+    }
+    .item{
+      background: rgba(255,255,255,.86);
+      border:1px solid rgba(47,58,28,.12);
+      border-radius: 16px;
+      padding:16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .item .name{
+      font-weight:850;
+      color:var(--olive-900);
+      font-size:16px;
+    }
+    .item .sub{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.4;
+    }
+    .price{
+      font-weight:900;
+      font-size:16px;
+      color:var(--olive-900);
+      background: rgba(111,143,58,.14);
+      border:1px solid rgba(111,143,58,.25);
+      padding:8px 10px;
+      border-radius: 14px;
+      white-space:nowrap;
+      height: fit-content;
+    }
+
+    .footer-cta{
+      margin-top:18px;
+      padding:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      background: linear-gradient(135deg, rgba(47,58,28,.08), rgba(111,143,58,.12));
+      border-top:1px solid rgba(47,58,28,.10);
+    }
+    .footer-cta strong{
+      font-size:15px;
+      color:var(--olive-900);
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.75);
+      border:1px solid rgba(47,58,28,.12);
+      color:var(--olive-900);
+      font-weight:800;
+    }
+
+    .lang{
+      display:none;
+    }
+    .lang.show{
+      display:block;
+    }
+
+    footer{
+      margin-top:18px;
+      color: rgba(17,24,39,.55);
+      font-size:12.5px;
+      text-align:center;
+    }
+
+    @media (max-width: 880px){
+      header{
+        position:static;
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .brand{ justify-content:center; }
+      .hero{
+        grid-template-columns: 1fr;
+      }
+      .menu-grid{
+        grid-template-columns: 1fr;
+      }
+      .menu-header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .menu-header .date{ white-space:normal; }
+    }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+  <div class="container">
     <header>
-      <div class="kicker">I AM ETERNAL MINISTRIES · MINISTERIOS EL GRAN YO SOY</div>
-      <h1>Friendly Flavors<br/>Sabores Amigables</h1>
-      <div class="divider"><span class="apple">🍎</span></div>
-      <p class="sub">
-        A monthly food sale to raise funds for our new temple.<br/>
-        Una venta mensual de comida para recaudar fondos para nuestro nuevo templo.
-      </p>
+      <div class="brand">
+        <img src="Church logo-Vector.png" alt="Church logo" />
+        <div class="title">
+          <strong>I AM ETERNAL MINISTRIES</strong>
+          <span>Friendly Flavors / Sabores Amigables</span>
+        </div>
+      </div>
 
-      <div class="toggleRow" aria-label="Language shortcuts">
-        <a class="btn" href="#english">English</a>
-        <a class="btn" href="#spanish">Español</a>
+      <div class="lang-toggle" role="tablist" aria-label="Language toggle">
+        <button id="btn-en" class="active" type="button" aria-selected="true">English</button>
+        <button id="btn-es" type="button" aria-selected="false">Español</button>
       </div>
     </header>
 
-    <section class="grid">
-      <!-- ENGLISH -->
-      <article class="card" id="english">
-        <span class="langtag">ENGLISH</span>
-        <h2>Friendly Flavors</h2>
-        <p class="lead">
-          Join us for <strong>"Friendly Flavors"</strong>, a monthly food sale by <strong>I AM Eternal Ministries</strong>
-          to raise funds for our new temple. Enjoy delicious dishes and support a great cause!
-        </p>
-        <p class="strong">Everyone is welcome!</p>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="card hero-main">
+        <div class="badge">Monthly Food Sale • Fundraiser</div>
 
-        <div class="cta">
-          <div class="label">Text to submit your order</div>
-          <div class="phone"><a href="sms:+16193611391">(619) 361-1391</a></div>
-          <p class="hint">Include Name and Contact Info</p>
+        <!-- EN -->
+        <div class="lang show" data-lang="en">
+          <h1>Friendly Flavors</h1>
+          <p>
+            Join us for <strong>“Friendly Flavors”</strong>, a monthly food sale by
+            <strong>I AM Eternal Ministries</strong> to raise funds for our new temple.
+            Enjoy delicious dishes and support a great cause!
+            <strong>Everyone is welcome!</strong>
+          </p>
+
+          <div class="cta-row">
+            <div class="cta" aria-label="Text to order">
+              <div>
+                <div class="label">Text to submit your order</div>
+                <div class="value">(619) 361-1391</div>
+                <div class="label">Include Name and Contact Info</div>
+              </div>
+              <!-- Optional: This "sms:" link works best on phones -->
+              <a class="button" href="sms:+16193611391">Text Now</a>
+            </div>
+          </div>
         </div>
 
-        <div class="menuTitle">MENU for Sun, Feb 22<sup>nd</sup></div>
-        <table class="menu" aria-label="English menu">
-          <tr><td>Chicken Mole Meal</td><td>$16</td></tr>
-          <tr><td>Red Rice</td><td>Free w/ Meal</td></tr>
-          <tr><td><strong>Family Meal</strong> (x4 meals)</td><td>$55</td></tr>
-          <tr><td>Bottled Water</td><td>w/ Meal</td></tr>
-        </table>
+        <!-- ES -->
+        <div class="lang" data-lang="es">
+          <h1>Sabores Amigables</h1>
+          <p>
+            Únase a nosotros en <strong>“Sabores Amigables”</strong>, una venta mensual de comida organizada por
+            <strong>Ministerios El Gran Yo Soy</strong> para recaudar fondos para nuestro nuevo templo.
+            ¡Disfrute de platos deliciosos y apoye una gran causa!
+            <strong>¡Todos son bienvenidos!</strong>
+          </p>
 
-        <div class="footCta">Accepting Orders Now</div>
-      </article>
+          <div class="cta-row">
+            <div class="cta" aria-label="Mensaje de texto para ordenar">
+              <div>
+                <div class="label">Manda Texto a</div>
+                <div class="value">(619) 361-1391</div>
+                <div class="label">para enviar su pedido • Incluye tu Nombre y Información de contacto</div>
+              </div>
+              <a class="button" href="sms:+16193611391">Enviar Texto</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <!-- SPANISH -->
-      <article class="card" id="spanish">
-        <span class="langtag">ESPAÑOL</span>
-        <h2>Sabores Amigables</h2>
-        <p class="lead">
-          Únase a nosotros en <strong>"Sabores Amigables"</strong>, una venta mensual de comida organizada por
-          <strong>Ministerios El Gran Yo Soy</strong> para recaudar fondos para nuestro nuevo templo.
-          ¡Disfrute de platos deliciosos y apoye una gran causa!
-        </p>
-        <p class="strong">¡Todos son bienvenidos!</p>
+      <aside class="card hero-side">
+        <div class="panel">
+          <!-- EN -->
+          <div class="lang show" data-lang="en">
+            <h2>How ordering works</h2>
+            <ul>
+              <li>Text your order to <strong>(619) 361-1391</strong></li>
+              <li>Include your <strong>Name</strong> and <strong>Contact Info</strong></li>
+              <li>Pick the meal option(s) below</li>
+              <li><strong>Accepting Orders Now</strong></li>
+            </ul>
+          </div>
 
-        <div class="cta">
-          <div class="label">Manda texto para enviar su pedido</div>
-          <div class="phone"><a href="sms:+16193611391">(619) 361-1391</a></div>
-          <p class="hint">Incluye tu Nombre y Información de contacto</p>
+          <!-- ES -->
+          <div class="lang" data-lang="es">
+            <h2>Cómo ordenar</h2>
+            <ul>
+              <li>Manda tu pedido por texto a <strong>(619) 361-1391</strong></li>
+              <li>Incluye tu <strong>Nombre</strong> e <strong>Información de contacto</strong></li>
+              <li>Elige las opciones del menú abajo</li>
+              <li><strong>Aceptando Pedidos Ahora</strong></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- MENU -->
+    <section class="card menu" aria-label="Menu">
+      <div class="menu-header">
+        <!-- EN -->
+        <div class="lang show" data-lang="en">
+          <h2>Menu</h2>
+          <div class="date">for Sun, Feb 22nd</div>
+        </div>
+        <!-- ES -->
+        <div class="lang" data-lang="es">
+          <h2>MENÚ</h2>
+          <div class="date">para Dom., 22 de Feb</div>
         </div>
 
-        <div class="menuTitle">MENÚ para Dom., 22 de Feb</div>
-        <table class="menu" aria-label="Menú en español">
-          <tr><td>Mole con Pollo</td><td>$16</td></tr>
-          <tr><td>Arroz Rojo</td><td>Gratis</td></tr>
-          <tr><td><strong>Orden Familiar</strong> (x4 ordenes)</td><td>$55</td></tr>
-          <tr><td>Botella de Agua</td><td>Con Orden</td></tr>
-        </table>
+        <div class="pill" title="Orders are open">
+          ✅ <span class="lang show" data-lang="en">Accepting Orders Now</span>
+          <span class="lang" data-lang="es">Aceptando Pedidos Ahora</span>
+        </div>
+      </div>
 
-        <div class="footCta">Aceptando Pedidos Ahora</div>
-      </article>
+      <div class="menu-grid">
+        <!-- EN -->
+        <div class="lang show" data-lang="en">
+          <div class="item">
+            <div>
+              <div class="name">Teriyaki Grilled Chicken</div>
+            </div>
+            <div class="price">$16</div>
+          </div>
+
+          <div class="item">
+            <div>
+              <div class="name">Macaroni Salad</div>
+              <div class="sub">Free w/ Meal</div>
+            </div>
+            <div class="price">Free</div>
+          </div>
+
+          <div class="item">
+            <div>
+              <div class="name">Family Meal (x4 meals)</div>
+            </div>
+            <div class="price">$55</div>
+          </div>
+
+          <div class="item">
+            <div>
+              <div class="name">Bottled Water</div>
+              <div class="sub">w/ Meal</div>
+            </div>
+            <div class="price">Included</div>
+          </div>
+        </div>
+
+        <!-- ES -->
+        <div class="lang" data-lang="es">
+          <div class="item">
+            <div>
+              <div class="name">Pollo Teriyaki a la Parrilla</div>
+            </div>
+            <div class="price">$16</div>
+          </div>
+
+          <div class="item">
+            <div>
+              <div class="name">Ensalada de Coditos</div>
+              <div class="sub">Gratis</div>
+            </div>
+            <div class="price">Gratis</div>
+          </div>
+
+          <div class="item">
+            <div>
+              <div class="name">Orden Familiar (x4 ordenes)</div>
+            </div>
+            <div class="price">$55</div>
+          </div>
+
+          <div class="item">
+            <div>
+              <div class="name">Botella de Agua</div>
+              <div class="sub">Con Orden</div>
+            </div>
+            <div class="price">Incluida</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-cta">
+        <div>
+          <strong class="lang show" data-lang="en">Ready to order?</strong>
+          <strong class="lang" data-lang="es">¿Listo para ordenar?</strong>
+          <div style="margin-top:6px;color:var(--muted);font-size:13.5px;">
+            <span class="lang show" data-lang="en">Text</span>
+            <span class="lang" data-lang="es">Manda texto a</span>
+            <strong>(619) 361-1391</strong>
+            <span class="lang show" data-lang="en">and include your Name & Contact Info.</span>
+            <span class="lang" data-lang="es">e incluye tu Nombre e Información de contacto.</span>
+          </div>
+        </div>
+
+        <a class="pill" href="sms:+16193611391" style="text-decoration:none;">
+          📩 <span class="lang show" data-lang="en">Text (619) 361-1391</span>
+          <span class="lang" data-lang="es">Texto (619) 361-1391</span>
+        </a>
+      </div>
     </section>
 
     <footer>
-      Tip: On iPhone/Android, tapping the phone number should open your texting app.
+      <span class="lang show" data-lang="en">© I AM Eternal Ministries • Friendly Flavors</span>
+      <span class="lang" data-lang="es">© Ministerios El Gran Yo Soy • Sabores Amigables</span>
     </footer>
   </div>
+
+  <script>
+    const btnEn = document.getElementById('btn-en');
+    const btnEs = document.getElementById('btn-es');
+    const blocks = Array.from(document.querySelectorAll('.lang'));
+
+    function setLang(lang){
+      blocks.forEach(el => {
+        el.classList.toggle('show', el.dataset.lang === lang);
+      });
+
+      btnEn.classList.toggle('active', lang === 'en');
+      btnEs.classList.toggle('active', lang === 'es');
+      btnEn.setAttribute('aria-selected', lang === 'en' ? 'true' : 'false');
+      btnEs.setAttribute('aria-selected', lang === 'es' ? 'true' : 'false');
+
+      document.documentElement.lang = lang;
+    }
+
+    btnEn.addEventListener('click', () => setLang('en'));
+    btnEs.addEventListener('click', () => setLang('es'));
+  </script>
 </body>
 </html>
